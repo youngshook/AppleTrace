@@ -11,6 +11,8 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <pthread.h>
+#include <mach/mach_time.h>
 
 class OSTrace{
 private:
@@ -18,6 +20,17 @@ private:
     
 public:
     
+    void BeginSection(const char *name){
+        pthread_t thread = pthread_self();
+        __uint64_t thread_id=0;
+        pthread_threadid_np(thread,&thread_id);
+        uint64_t time = mach_absolute_time();
+        
+    }
+    
+    void EndSection(const char* name){
+        
+    }
     
     
 };
