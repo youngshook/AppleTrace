@@ -12,14 +12,11 @@ SIMPLE *OS Trace (`*OS` stands for `iOS/macOS`)
 
 ## Usage
 
-Until now , there are 2 ways using `ostrace`.
+Until now , there are 3 ways using `ostrace`.
 
 1. Manual set section.
 2. Dynamic library hooking all objc_msgSend.
-
-
-
-
+3. Dtrace script (only macOS).
 
 
 ## Thanks
