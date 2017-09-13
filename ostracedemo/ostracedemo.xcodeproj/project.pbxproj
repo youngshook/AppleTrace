@@ -13,6 +13,8 @@
 		D12C5C481F66F93E009596E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12C5C461F66F93E009596E0 /* Main.storyboard */; };
 		D12C5C4A1F66F93E009596E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D12C5C491F66F93E009596E0 /* Assets.xcassets */; };
 		D12C5C4D1F66F93E009596E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12C5C4B1F66F93E009596E0 /* LaunchScreen.storyboard */; };
+		D12C5C811F68BD21009596E0 /* ostracelib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12C5C7C1F66FA30009596E0 /* ostracelib.framework */; };
+		D12C5C831F68BD4C009596E0 /* ostracelib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D12C5C7C1F66FA30009596E0 /* ostracelib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,19 @@
 			remoteInfo = ostracelib;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D12C5C821F68BD46009596E0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D12C5C831F68BD4C009596E0 /* ostracelib.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D12C5C3A1F66F93E009596E0 /* ostracedemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ostracedemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D12C5C811F68BD21009596E0 /* ostracelib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +130,7 @@
 			buildConfigurationList = D12C5C511F66F93E009596E0 /* Build configuration list for PBXNativeTarget "ostracedemo" */;
 			buildPhases = (
 				D12C5C361F66F93E009596E0 /* Sources */,
+				D12C5C821F68BD46009596E0 /* CopyFiles */,
 				D12C5C371F66F93E009596E0 /* Frameworks */,
 				D12C5C381F66F93E009596E0 /* Resources */,
 			);

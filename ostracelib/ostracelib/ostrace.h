@@ -10,8 +10,9 @@
 
 #import <Foundation/Foundation.h>
 
-void OSTBeginSection(const char* name);
-void OSTEndSection(const char* name);
+FOUNDATION_EXPORT void OSTBeginSection(const char* name);
+FOUNDATION_EXPORT void OSTEndSection(const char* name);
+FOUNDATION_EXPORT void OSTTest();
 
 
 // Objective C class method
