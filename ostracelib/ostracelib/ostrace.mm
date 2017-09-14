@@ -133,41 +133,91 @@ namespace ost {
     
     class Trace{
     private:
-        
+        LoggerManager log_;
+        dispatch_queue_t queue_;
+        uint64_t begin_;
     public:
+        bool Open(){
+            if(!log_.Open()){
+                return false;
+            }
+            
+            queue_ = dispatch_queue_create("ostrace.queue", DISPATCH_QUEUE_SERIAL);
+            begin_ = mach_absolute_time();
+            return true;
+        }
         
-        void BeginSection(const char *name){
+        void WriteSection(const char *name,const char *ph){
             pthread_t thread = pthread_self();
             __uint64_t thread_id=0;
             pthread_threadid_np(thread,&thread_id);
             uint64_t time = mach_absolute_time();
             
+            char sz[256] = {0};
+            sprintf(sz, "{\"name\":\"%s\",\"cat\":\"catname\",\"ph\":\"%s\",\"pid\":666,\"tid\":%llu,\"ts\":%llu}",
+                    name,ph,thread_id,time-begin_
+                    );
+            NSString *str = [[NSString alloc]initWithCString:sz encoding:NSUTF8StringEncoding];
+            dispatch_async(queue_, ^{
+                log_.AddLine(str.UTF8String);
+            });
+        }
+    };
+    
+    class TraceManager{
+    private:
+        Trace t_;
+    public:
+        static TraceManager & Instance(){
+            static TraceManager o;
+            return o;
         }
         
+        TraceManager(){
+            if(!t_.Open()){
+                NSLog(@"error open trace file");
+            }
+        }
+        
+        void BeginSection(const char* name){
+            t_.WriteSection(name, "B");
+        }
+
         void EndSection(const char* name){
-            
+            t_.WriteSection(name, "E");
         }
-        
-        
     };
 }
 
+
 void OSTBeginSection(const char* name){
-    
+    ost::TraceManager::Instance().BeginSection(name);
 }
 
 void OSTEndSection(const char* name){
-    
+    ost::TraceManager::Instance().EndSection(name);
 }
 
 void OSTTest(){
-    ost::LoggerManager log;
-    if(!log.Open()){
+//    ost::LoggerManager log;
+//    if(!log.Open()){
+//        NSLog(@"open failed");
+//        return;
+//    }
+//    for(int i=0;i< 1000;i++){
+//        log.AddLine("hello");
+//    }
+    
+    
+    static ost::Trace t;
+    if(!t.Open()){
         NSLog(@"open failed");
         return;
     }
-    for(int i=0;i< 1000;i++){
-        log.AddLine("hello");
+    
+    for(int i = 0; i < 100; i++){
+        t.WriteSection("method_name", "B");
+        t.WriteSection("method_name", "E");
     }
 }
 
