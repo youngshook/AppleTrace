@@ -22,9 +22,10 @@
 namespace ost {
     class Logger{
     private:
+        int block_size = 64 * 1024 * 1024;  // 16MB
 //        int block_size = 16 * 1024 * 1024;  // 16MB
 //        int block_size = 1 * 1024 * 1024;  // 1MB
-        int block_size = 1 * 1024;  // 1KB
+//        int block_size = 1 * 1024;  // 1KB
         
         int fd_ = 0;
         char * file_start_ = NULL;
@@ -101,7 +102,12 @@ namespace ost {
     public:
         std::string GetFilePath(){
             NSString * tmp_dir = NSTemporaryDirectory();
-            NSString * log_name = [NSString stringWithFormat:@"ostrace_%@.ostrace",@(file_counter)];
+            NSString * log_name;
+            if(file_counter == 0){
+                log_name = @"trace.ostrace";
+            }else{
+                log_name = [NSString stringWithFormat:@"trace_%@.ostrace",@(file_counter)];
+            }
             NSString * log_path = [tmp_dir stringByAppendingPathComponent:log_name];
             NSLog(@"log path = %@",log_path);
             return std::string(log_path.UTF8String);
