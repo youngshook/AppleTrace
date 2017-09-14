@@ -22,51 +22,65 @@
 namespace ost {
     class Logger{
     private:
-        static int file_counter;
-        int fd_ = 0;
 //        int block_size = 16 * 1024 * 1024;  // 16MB
-        int block_size = 1 * 1024 * 1024;  // 16MB
+//        int block_size = 1 * 1024 * 1024;  // 1MB
+        int block_size = 1 * 1024;  // 1KB
+        
+        int fd_ = 0;
         char * file_start_ = NULL;
         char * file_cur_ = NULL;
         size_t cur_size_ = 0;
     public:
-        Logger(){
-            NSString * tmp_dir = NSTemporaryDirectory();
-            NSString * log_name = [NSString stringWithFormat:@"ostrace_%@.ostrace",@(file_counter)];
-            NSString * log_path = [tmp_dir stringByAppendingPathComponent:log_name];
-            NSLog(@"log path = %@",log_path);
+        Logger(){}
+        ~Logger(){}
+        
+        bool Open(const char * log_path){
+            Close();
             
-            fd_ = open(log_path.UTF8String, O_CREAT|O_RDWR,(mode_t)0600);
+            remove(log_path);
+            fd_ = ::open(log_path, O_CREAT|O_RDWR,(mode_t)0600);
             if(fd_ == -1){
                 NSLog(@"open file failed");
-                return;
+                return false;
             }
-            off_t cur_off = lseek(fd_, block_size - 1, SEEK_SET);
-            ssize_t wrote_bytes = write(fd_,"",1);
+            off_t cur_off = ::lseek(fd_, block_size - 1, SEEK_SET);
+            ssize_t wrote_bytes = ::write(fd_,"",1);
             if(wrote_bytes != 1){
-                // error
                 NSLog(@"wrote error");
-                return;
+                Close();
+                return false;
             }
-            lseek(fd_, 0, SEEK_SET);
+            ::lseek(fd_, 0, SEEK_SET);
             
-            file_start_ = (char*)mmap(NULL,block_size,PROT_READ|PROT_WRITE,MAP_SHARED,fd_,0);
+            file_start_ = (char*)::mmap(NULL,block_size,PROT_READ|PROT_WRITE,MAP_SHARED,fd_,0);
             if(file_start_ == MAP_FAILED){
-                // error
                 NSLog(@"map failed");
-                return;
+                Close();
+                return false;
             }
             file_cur_ = file_start_;
+            return true;
         }
-        ~Logger(){
-            munmap(file_start_, block_size);
-            close(fd_);
+        void Close(){
+            if(file_start_){
+                ::munmap(file_start_, block_size);
+            }
+            if(fd_){
+                ::close(fd_);
+            }
+            fd_ = 0;
+            file_start_ = NULL;
+            file_cur_ = NULL;
+            cur_size_ = 0;
         }
-        void AddLine(const char * line){
+        bool AddLine(const char * line){
+            if(!file_cur_)
+                return false;
+            
             size_t len = strlen(line);
             if(cur_size_ + len + 1> block_size){
-                NSLog(@"first file full");
-                return;
+                NSLog(@"file full");
+                return false;
             }
             
             memcpy(file_cur_, line, len);
@@ -75,10 +89,47 @@ namespace ost {
             file_cur_ += 1;
             
             cur_size_ += len + 1;
+            return true;
         }
     };
     
-    int Logger::file_counter = 0;
+    
+    class LoggerManager{
+    private:
+        static int file_counter;
+        Logger log_;
+    public:
+        std::string GetFilePath(){
+            NSString * tmp_dir = NSTemporaryDirectory();
+            NSString * log_name = [NSString stringWithFormat:@"ostrace_%@.ostrace",@(file_counter)];
+            NSString * log_path = [tmp_dir stringByAppendingPathComponent:log_name];
+            NSLog(@"log path = %@",log_path);
+            return std::string(log_path.UTF8String);
+        }
+        bool Open(){
+            std::string path = GetFilePath();
+            if(!log_.Open(path.c_str())){
+                return false;
+            }
+            ++file_counter;
+            return true;
+        }
+        void AddLine(const char *line){
+            if(log_.AddLine(line))
+                return;
+            
+            NSLog(@"will map a new file");
+            // map a new file
+            if(!Open())
+                return;
+            
+            if(!log_.AddLine(line)){
+                // error
+                NSLog(@"still error add line");
+            }
+        }
+    };
+    int LoggerManager::file_counter = 0;
     
     class Trace{
     private:
@@ -110,8 +161,12 @@ void OSTEndSection(const char* name){
 }
 
 void OSTTest(){
-    ost::Logger log;
-    for(int i=0;i< 100;i++){
+    ost::LoggerManager log;
+    if(!log.Open()){
+        NSLog(@"open failed");
+        return;
+    }
+    for(int i=0;i< 1000;i++){
         log.AddLine("hello");
     }
 }
