@@ -22,10 +22,10 @@
 namespace ost {
     class Logger{
     private:
-        int block_size = 64 * 1024 * 1024;  // 16MB
+//        int block_size = 64 * 1024 * 1024;  // 16MB
 //        int block_size = 16 * 1024 * 1024;  // 16MB
 //        int block_size = 1 * 1024 * 1024;  // 1MB
-//        int block_size = 1 * 1024;  // 1KB
+        int block_size = 1 * 1024;  // 1KB
         
         int fd_ = 0;
         char * file_start_ = NULL;
