@@ -33,7 +33,9 @@ class Merger:
         file = open(file_path)
         while True:
             line = file.readline()
-            if not line or line == '':
+            if not line or len(line) == 0:
+                break
+            if line[0] != '{':
                 break
             self.append(line)
 
