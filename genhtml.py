@@ -7,7 +7,7 @@
 #
 
 import os
-import optparse
+from optparse import OptionParser
 
 
 class Merger:
@@ -54,8 +54,17 @@ class Merger:
             i+=1
 
 def main():
-    m = Merger('tracedata/raw')
-    m.run()
+    p = OptionParser('usage: %prog -d <directory_path>')
+    p.add_option("-d","--dir",dest="dir",help="directory path that include all ostrace files")
+
+    (options,args) = p.parse_args()
+    if options.dir is None:
+        p.print_help();
+        return
+
+    if options.dir:
+        m = Merger(options.dir)
+        m.run()
 
 if __name__ == '__main__':
     main()
