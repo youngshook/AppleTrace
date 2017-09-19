@@ -63,8 +63,15 @@ def main():
         return
 
     if options.dir:
+        # merge into json
         m = Merger(options.dir)
         m.run()
+
+        # convert to html
+        # $CATAPULT/tracing/bin/trace2html my_trace.json --output=my_trace.html && open my_trace.html
+
+        # open
+
 
 if __name__ == '__main__':
     main()
