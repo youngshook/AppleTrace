@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ostracelib/ostrace.h"
+#import "ThreadTest.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,13 @@
     OSTBegin;
     
     usleep(200);
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        OSTBeginSection("dispatch_global");
+        ThreadTest *t = [[ThreadTest alloc]init];
+        [t go];
+        OSTEndSection("dispatch_global");
+    });
     
     [self levelOne];
     

@@ -15,6 +15,7 @@
 		D12C5C4D1F66F93E009596E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12C5C4B1F66F93E009596E0 /* LaunchScreen.storyboard */; };
 		D12C5C811F68BD21009596E0 /* ostracelib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12C5C7C1F66FA30009596E0 /* ostracelib.framework */; };
 		D12C5C831F68BD4C009596E0 /* ostracelib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D12C5C7C1F66FA30009596E0 /* ostracelib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D12C5C9F1F71758E009596E0 /* ThreadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D12C5C9E1F71758E009596E0 /* ThreadTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		D12C5C4C1F66F93E009596E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D12C5C4E1F66F93E009596E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D12C5C771F66FA30009596E0 /* ostracelib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ostracelib.xcodeproj; path = ../ostracelib/ostracelib.xcodeproj; sourceTree = "<group>"; };
+		D12C5C9D1F71758E009596E0 /* ThreadTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadTest.h; sourceTree = "<group>"; };
+		D12C5C9E1F71758E009596E0 /* ThreadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,8 @@
 				D12C5C4B1F66F93E009596E0 /* LaunchScreen.storyboard */,
 				D12C5C4E1F66F93E009596E0 /* Info.plist */,
 				D12C5C3D1F66F93E009596E0 /* Supporting Files */,
+				D12C5C9D1F71758E009596E0 /* ThreadTest.h */,
+				D12C5C9E1F71758E009596E0 /* ThreadTest.m */,
 			);
 			path = ostracedemo;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 				D12C5C451F66F93E009596E0 /* ViewController.m in Sources */,
 				D12C5C421F66F93E009596E0 /* AppDelegate.m in Sources */,
 				D12C5C3F1F66F93E009596E0 /* main.m in Sources */,
+				D12C5C9F1F71758E009596E0 /* ThreadTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
