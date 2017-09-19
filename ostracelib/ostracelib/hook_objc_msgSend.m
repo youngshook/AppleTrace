@@ -82,55 +82,41 @@ void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *ca
             char *class_name = object_getClassName(object_addr);
             unsigned int class_name_length = strlen(class_name);
             
-
+            char repl_name[256] = {0};
+            snprintf(repl_name, 256, "[%s]%s",class_name,sel_name);
+            NSLog(@"pre %s",repl_name);
             
-#if 0
-            // check View
-            if(class_name_length >= 4 && !strcmp((class_name + class_name_length - 4), "View")) {
-                printf(@"thread-id: %ld | %s [%s %s]", threadstack->thread_id, decollators, class_name, sel_name);
-            }
-#endif
-#if 0
-            printf("thread-id: %ld | %s [%s %s]\n", threadstack->thread_id, decollators, class_name, sel_name);
-#endif
-#if 1
-            // check ViewController
-            if(class_name_length >= 14 && !strcmp((class_name + class_name_length - 14), "ViewController")) {
-                printf("thread-id: %ld | %s [%s %s]\n", threadstack->thread_id, decollators, class_name, sel_name);
-            }
-#endif
-#if 0
-            // check ViewController with parse parameters (ref readme.md)
-            if(class_name_length >= 14 && !strcmp((class_name + class_name_length - 14), "ViewController")) {
-                Method method = class_getInstanceMethod(class_addr, sel_name);
-                int num_args = method_getNumberOfArguments(method);
-                char method_name[128] = {0};
-                char sel_name_tmp[128] = {0};
-                char *x;
-                char *y;
-                x = sel_name_tmp;
-                strcpy(sel_name_tmp, sel_name);
-                if(!strchr(x, ':')) {
-                    printf("thread-id: %ld | %s [%s %s]\n", threadstack->thread_id, decollators, class_name, sel_name_tmp);
-                    return;
-                    
-                }
-                for (int i=2; strchr(x, ':') && i < num_args; i++) {
-                    y = strchr(x, ':');
-                    *y = '\0';
-                    char *type_name = method_copyArgumentType(method, i);
-                    sprintf(method_name + strlen(method_name), "%s:", x);
-                    sprintfArg(method_name + strlen(method_name), rs, i, type_name);
-                    x = y + 1;
-                }
-                printf("thread-id: %ld | %s [%s %s]\n", threadstack->thread_id, decollators, class_name, method_name);
-            }
-#endif
         }
     }
 }
 
 void ojbc_msgSend_post_call(RegState *rs, ThreadStack *threadstack, CallStack *callstack) {
+    char *sel_name = (char *)rs->general.regs.x1;
+    // No More Work Here!!! it will be slow.
+    if(LOG_ALL_SEL || (sel_name > log_sel_start_addr && sel_name < log_sel_end_addr)) {
+        // bad code! correct-ref: https://github.com/DavidGoldman/InspectiveC/blob/299cef1c40e8a165c697f97bcd317c5cfa55c4ba/logging.mm#L27
+        void *object_addr = (void *)rs->general.regs.x0;
+        void *class_addr = zz_macho_object_get_class((id)object_addr);
+        if(!class_addr)
+            return;
+        
+        void *super_class_addr = class_getSuperclass(class_addr);
+        // KVO 2333
+        if(LOG_ALL_CLASS || ((object_addr > log_class_start_addr && object_addr < log_class_end_addr) || (class_addr > log_class_start_addr && class_addr < log_class_end_addr) || (super_class_addr > log_class_start_addr && super_class_addr < log_class_end_addr))) {
+            memset(decollators, 45, 128);
+            if(threadstack->size * 3 >= 128)
+                return;
+            decollators[threadstack->size * 3] = '\0';
+//            char *class_name = class_getName(object_addr);
+            char *class_name = object_getClassName(object_addr);
+            unsigned int class_name_length = strlen(class_name);
+            
+            char repl_name[256] = {0};
+            snprintf(repl_name, 256, "[%s]%s",class_name,sel_name);
+            
+            NSLog(@"post %s",repl_name);
+        }
+    }
 }
 
 + (void)hook_objc_msgSend {
