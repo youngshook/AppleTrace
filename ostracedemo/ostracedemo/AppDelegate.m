@@ -18,8 +18,48 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    OSTTest();
+    OSTBegin;
     
+    usleep(200);
+    
+    [self levelOne];
+    
+    OSTEnd;
+    return YES;
+}
+
+- (void)levelOne{
+    OSTBegin;
+    
+    usleep(50);
+    [self levelTwo];
+    OSTEnd;
+}
+
+- (void)levelTwo{
+    OSTBegin;
+    
+    usleep(50);
+    [self levelThree];
+    OSTEnd;
+}
+
+- (void)levelThree{
+    OSTBegin;
+    
+    usleep(50);
+    
+    [[self class]staticMethod:@"hi"];
+    
+    OSTEnd;
+}
+
++ (BOOL)staticMethod:(NSString*)words{
+    OSTBegin;
+    
+    usleep(100);
+    
+    OSTEnd;
     return YES;
 }
 

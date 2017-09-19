@@ -16,5 +16,5 @@ FOUNDATION_EXPORT void OSTTest();
 
 
 // Objective C class method
-#define OSTBegin
-#define OSTEnd
+#define OSTBegin OSTBeginSection([NSString stringWithFormat:@"[%@]%@",self,NSStringFromSelector(_cmd)].UTF8String)
+#define OSTEnd OSTEndSection([NSString stringWithFormat:@"[%@]%@",self,NSStringFromSelector(_cmd)].UTF8String)
