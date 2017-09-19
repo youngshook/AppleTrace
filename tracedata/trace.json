@@ -1,0 +1,11 @@
+[
+{"name":"[<AppDelegate: 0x61800003b6e0>]application:didFinishLaunchingWithOptions:","cat":"catname","ph":"B","pid":666,"tid":738896,"ts":18126},
+{"name":"[<AppDelegate: 0x61800003b6e0>]levelOne","cat":"catname","ph":"B","pid":666,"tid":738896,"ts":316681},
+{"name":"[<AppDelegate: 0x61800003b6e0>]levelTwo","cat":"catname","ph":"B","pid":666,"tid":738896,"ts":414623},
+{"name":"[<AppDelegate: 0x61800003b6e0>]levelThree","cat":"catname","ph":"B","pid":666,"tid":738896,"ts":483196},
+{"name":"[AppDelegate]staticMethod:","cat":"catname","ph":"B","pid":666,"tid":738896,"ts":560613},
+{"name":"[AppDelegate]staticMethod:","cat":"catname","ph":"E","pid":666,"tid":738896,"ts":689847},
+{"name":"[<AppDelegate: 0x61800003b6e0>]levelThree","cat":"catname","ph":"E","pid":666,"tid":738896,"ts":697022},
+{"name":"[<AppDelegate: 0x61800003b6e0>]levelTwo","cat":"catname","ph":"E","pid":666,"tid":738896,"ts":702322},
+{"name":"[<AppDelegate: 0x61800003b6e0>]levelOne","cat":"catname","ph":"E","pid":666,"tid":738896,"ts":706872},
+{"name":"[<AppDelegate: 0x61800003b6e0>]application:didFinishLaunchingWithOptions:","cat":"catname","ph":"E","pid":666,"tid":738896,"ts":711634},
