@@ -14,25 +14,8 @@
 		D17E9A521F72E1860034AAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17E9A511F72E1860034AAE7 /* Assets.xcassets */; };
 		D17E9A551F72E1860034AAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17E9A531F72E1860034AAE7 /* LaunchScreen.storyboard */; };
 		D17E9A5E1F72E1D90034AAE7 /* ThreadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D17E9A5D1F72E1D90034AAE7 /* ThreadTest.m */; };
-		D17E9A681F72E23C0034AAE7 /* appletrace.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D17E9A641F72E2290034AAE7 /* appletrace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D17E9A6B1F72E51E0034AAE7 /* appletrace.mm in Sources */ = {isa = PBXBuildFile; fileRef = D17E9A6A1F72E51E0034AAE7 /* appletrace.mm */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D17E9A631F72E2290034AAE7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D17E9A5F1F72E2290034AAE7 /* appletrace.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D17E997F1F72DF300034AAE7;
-			remoteInfo = appletrace;
-		};
-		D17E9A651F72E22E0034AAE7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D17E9A5F1F72E2290034AAE7 /* appletrace.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D17E997E1F72DF300034AAE7;
-			remoteInfo = appletrace;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D17E9A671F72E2340034AAE7 /* CopyFiles */ = {
@@ -41,7 +24,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D17E9A681F72E23C0034AAE7 /* appletrace.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +42,8 @@
 		D17E9A561F72E1860034AAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D17E9A5C1F72E1D90034AAE7 /* ThreadTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadTest.h; sourceTree = "<group>"; };
 		D17E9A5D1F72E1D90034AAE7 /* ThreadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadTest.m; sourceTree = "<group>"; };
-		D17E9A5F1F72E2290034AAE7 /* appletrace.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = appletrace.xcodeproj; path = ../../appletrace/appletrace.xcodeproj; sourceTree = "<group>"; };
+		D17E9A691F72E51E0034AAE7 /* appletrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = appletrace.h; path = ../../../appletrace/appletrace/src/appletrace.h; sourceTree = "<group>"; };
+		D17E9A6A1F72E51E0034AAE7 /* appletrace.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = appletrace.mm; path = ../../../appletrace/appletrace/src/appletrace.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +60,6 @@
 		D17E9A391F72E1860034AAE7 = {
 			isa = PBXGroup;
 			children = (
-				D17E9A5F1F72E2290034AAE7 /* appletrace.xcodeproj */,
 				D17E9A441F72E1860034AAE7 /* ManualSectionDemo */,
 				D17E9A431F72E1860034AAE7 /* Products */,
 			);
@@ -94,6 +76,7 @@
 		D17E9A441F72E1860034AAE7 /* ManualSectionDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D17E9A6C1F72E5310034AAE7 /* external */,
 				D17E9A481F72E1860034AAE7 /* AppDelegate.h */,
 				D17E9A491F72E1860034AAE7 /* AppDelegate.m */,
 				D17E9A4B1F72E1860034AAE7 /* ViewController.h */,
@@ -117,12 +100,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D17E9A601F72E2290034AAE7 /* Products */ = {
+		D17E9A6C1F72E5310034AAE7 /* external */ = {
 			isa = PBXGroup;
 			children = (
-				D17E9A641F72E2290034AAE7 /* appletrace.framework */,
+				D17E9A691F72E51E0034AAE7 /* appletrace.h */,
+				D17E9A6A1F72E51E0034AAE7 /* appletrace.mm */,
 			);
-			name = Products;
+			name = external;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +124,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D17E9A661F72E22E0034AAE7 /* PBXTargetDependency */,
 			);
 			name = ManualSectionDemo;
 			productName = ManualSectionDemo;
@@ -174,28 +157,12 @@
 			mainGroup = D17E9A391F72E1860034AAE7;
 			productRefGroup = D17E9A431F72E1860034AAE7 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D17E9A601F72E2290034AAE7 /* Products */;
-					ProjectRef = D17E9A5F1F72E2290034AAE7 /* appletrace.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D17E9A411F72E1860034AAE7 /* ManualSectionDemo */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D17E9A641F72E2290034AAE7 /* appletrace.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = appletrace.framework;
-			remoteRef = D17E9A631F72E2290034AAE7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D17E9A401F72E1860034AAE7 /* Resources */ = {
@@ -216,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D17E9A4D1F72E1860034AAE7 /* ViewController.m in Sources */,
+				D17E9A6B1F72E51E0034AAE7 /* appletrace.mm in Sources */,
 				D17E9A4A1F72E1860034AAE7 /* AppDelegate.m in Sources */,
 				D17E9A471F72E1860034AAE7 /* main.m in Sources */,
 				D17E9A5E1F72E1D90034AAE7 /* ThreadTest.m in Sources */,
@@ -223,14 +191,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D17E9A661F72E22E0034AAE7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = appletrace;
-			targetProxy = D17E9A651F72E22E0034AAE7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D17E9A4E1F72E1860034AAE7 /* Main.storyboard */ = {

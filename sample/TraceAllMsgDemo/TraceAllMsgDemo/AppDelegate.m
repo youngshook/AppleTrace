@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  ManualSectionDemo
+//  TraceAllMsgDemo
 //
 //  Created by everettjf on 21/09/2017.
 //  Copyright © 2017 everettjf. All rights reserved.
@@ -19,64 +19,46 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    APTBegin;
-    
     [self myTest];
     
     usleep(200);
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        APTBeginSection("dispatch_global");
         ThreadTest *t = [[ThreadTest alloc]init];
         [t go];
-        APTEndSection("dispatch_global");
     });
     
     [self levelOne];
     
-    APTEnd;
     return YES;
 }
 - (void)myTest{
-    APTBegin;
     NSLog(@"my test");
-    APTEnd;
 }
 
 - (void)levelOne{
-    APTBegin;
-    
     usleep(50);
     [self levelTwo];
-    APTEnd;
 }
 
 - (void)levelTwo{
-    APTBegin;
-    
     usleep(50);
     [self levelThree];
-    APTEnd;
 }
 
 - (void)levelThree{
-    APTBegin;
-    
     usleep(50);
     
     [[self class]staticMethod:@"hi"];
-    
-    APTEnd;
 }
 
 + (BOOL)staticMethod:(NSString*)words{
-    APTBegin;
-    
     usleep(100);
-    
-    APTEnd;
     return YES;
 }
+
+
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
