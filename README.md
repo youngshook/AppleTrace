@@ -3,6 +3,7 @@ SIMPLE *OS Trace (`*OS` stands for `iOS/macOS`)
 
 `ostrace` is mainly for `iOS/macOS`, similar to `systrace` for `Android`.
 
+![sample](sample.png)
 
 ## Feature
 
