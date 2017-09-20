@@ -7,37 +7,26 @@
 //
 
 #import "ThreadTest.h"
-#import <ostracelib/ostrace.h>
 
 @implementation ThreadTest
 
 - (void)go{
-    OSTBegin;
     usleep(20);
-    
     [self goOne];
-    
-    OSTEnd;
 }
 
 - (void)goOne{
-    OSTBegin;
     [self goTwo];
-    OSTEnd;
 }
 
 - (void)goTwo{
-    OSTBegin;
     for(int i=0;i<10;i++){
         [self goLoop];
     }
-    OSTEnd;
 }
 
 - (void)goLoop{
-    OSTBegin;
     usleep(20);
-    OSTEnd;
 }
 
 @end

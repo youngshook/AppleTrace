@@ -19,22 +19,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    OSTBegin;
-    
     [self myTest];
     
     usleep(200);
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        OSTBeginSection("dispatch_global");
         ThreadTest *t = [[ThreadTest alloc]init];
         [t go];
-        OSTEndSection("dispatch_global");
     });
     
     [self levelOne];
     
-    OSTEnd;
     return YES;
 }
 - (void)myTest{
@@ -42,37 +37,23 @@
 }
 
 - (void)levelOne{
-    OSTBegin;
-    
     usleep(50);
     [self levelTwo];
-    OSTEnd;
 }
 
 - (void)levelTwo{
-    OSTBegin;
-    
     usleep(50);
     [self levelThree];
-    OSTEnd;
 }
 
 - (void)levelThree{
-    OSTBegin;
-    
     usleep(50);
     
     [[self class]staticMethod:@"hi"];
-    
-    OSTEnd;
 }
 
 + (BOOL)staticMethod:(NSString*)words{
-    OSTBegin;
-    
     usleep(100);
-    
-    OSTEnd;
     return YES;
 }
 
