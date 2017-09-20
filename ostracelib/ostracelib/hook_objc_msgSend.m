@@ -21,6 +21,8 @@
 #import <mach-o/dyld.h>
 #import <dlfcn.h>
 
+#define KENABLE 1
+
 struct section_64 *zz_macho_get_section_64_via_name(struct mach_header_64 *header, char *sect_name);
 zpointer zz_macho_get_section_64_address_via_name(struct mach_header_64 *header, char *sect_name);
 struct segment_command_64 *zz_macho_get_segment_64_via_name(struct mach_header_64 *header, char *segment_name);
@@ -43,6 +45,9 @@ int LOG_ALL_CLASS = 0;
 @implementation HookZz
 
 + (void)load {
+#if !(KENABLE)
+    return;
+#endif
     
     const struct mach_header *header = _dyld_get_image_header(0);
     struct segment_command_64 *seg_cmd_64_text = zz_macho_get_segment_64_via_name((struct mach_header_64 *)header, (char *)"__TEXT");
