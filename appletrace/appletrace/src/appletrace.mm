@@ -7,7 +7,7 @@
 //
 
 
-#import "ostrace.h"
+#import "appletrace.h"
 #include <map>
 #include <vector>
 #include <string>

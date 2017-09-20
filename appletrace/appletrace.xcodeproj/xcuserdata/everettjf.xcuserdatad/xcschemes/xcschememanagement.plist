@@ -4,15 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ostracelib.xcscheme</key>
+		<key>appletrace.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>D12C5C5D1F66F97F009596E0</key>
+		<key>D17E997E1F72DF300034AAE7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

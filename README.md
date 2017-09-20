@@ -1,7 +1,7 @@
-# ostrace
-*OS Trace for iOS/macOS (`*OS` stands for `iOS/macOS`)
+# AppleTrace
+Trace tool for iOS/macOS
 
-`ostrace` is mainly for `iOS/macOS`, similar to `systrace` for `Android`.
+`AppleTrace` is developed for analyzing app's performance on `iOS/macOS`.
 
 ![sample](sample.png)
 
@@ -19,11 +19,13 @@ Until now , there are 2 ways using `ostrace`.
 
 
 
-## Develop Plan
-
-1. dtrace as data source.
-
-## Thanks
+## Dependencies
 
 1. catapult
 2. HookZz
+
+
+
+## Develop Plan
+
+1. dtrace as data source.

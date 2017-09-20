@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D12C5C5D1F66F97F009596E0"
-               BuildableName = "ostracelib.framework"
-               BlueprintName = "ostracelib"
-               ReferencedContainer = "container:ostracelib.xcodeproj">
+               BlueprintIdentifier = "D17E997E1F72DF300034AAE7"
+               BuildableName = "appletrace.framework"
+               BlueprintName = "appletrace"
+               ReferencedContainer = "container:appletrace.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D12C5C5D1F66F97F009596E0"
-            BuildableName = "ostracelib.framework"
-            BlueprintName = "ostracelib"
-            ReferencedContainer = "container:ostracelib.xcodeproj">
+            BlueprintIdentifier = "D17E997E1F72DF300034AAE7"
+            BuildableName = "appletrace.framework"
+            BlueprintName = "appletrace"
+            ReferencedContainer = "container:appletrace.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D12C5C5D1F66F97F009596E0"
-            BuildableName = "ostracelib.framework"
-            BlueprintName = "ostracelib"
-            ReferencedContainer = "container:ostracelib.xcodeproj">
+            BlueprintIdentifier = "D17E997E1F72DF300034AAE7"
+            BuildableName = "appletrace.framework"
+            BlueprintName = "appletrace"
+            ReferencedContainer = "container:appletrace.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

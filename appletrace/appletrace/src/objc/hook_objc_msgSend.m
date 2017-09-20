@@ -20,7 +20,7 @@
 #import <objc/message.h>
 #import <mach-o/dyld.h>
 #import <dlfcn.h>
-#import "ostrace.h"
+#import "appletrace.h"
 
 #define KENABLE 1
 
