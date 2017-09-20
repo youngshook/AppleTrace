@@ -12,7 +12,7 @@ Trace tool for iOS/macOS
 
 ## Usage
 
-Until now , there are 2 ways using `ostrace`.
+Until now , there are 2 ways using `AppleTrace`.
 
 1. Manual set section.
 2. Dynamic library hooking all objc_msgSend.
