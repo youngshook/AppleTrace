@@ -91,7 +91,7 @@ void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *ca
             STACK_SET(callstack, "repl_name", repl_name, char*);
             
             NSLog(@"pre %s",repl_name);
-            OSTBeginSection(repl_name);
+            APTBeginSection(repl_name);
         }
     }
 }
@@ -100,7 +100,7 @@ void objc_msgSend_post_call(RegState *rs, ThreadStack *threadstack, CallStack *c
     if(STACK_CHECK_KEY(callstack, "repl_name")){
         char *repl_name = STACK_GET(callstack, "repl_name", char*);
         NSLog(@"post %s",repl_name);
-        OSTEndSection(repl_name);
+        APTEndSection(repl_name);
         
         free(repl_name);
     }

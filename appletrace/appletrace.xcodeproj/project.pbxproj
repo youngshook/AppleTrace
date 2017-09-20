@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D17E99EB1F72DFC20034AAE7 /* appletrace.h in Headers */ = {isa = PBXBuildFile; fileRef = D17E998B1F72DFC20034AAE7 /* appletrace.h */; };
+		D17E99EB1F72DFC20034AAE7 /* appletrace.h in Headers */ = {isa = PBXBuildFile; fileRef = D17E998B1F72DFC20034AAE7 /* appletrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D17E99EC1F72DFC20034AAE7 /* appletrace.mm in Sources */ = {isa = PBXBuildFile; fileRef = D17E998C1F72DFC20034AAE7 /* appletrace.mm */; };
 		D17E99ED1F72DFC20034AAE7 /* hook_objc_msgSend.m in Sources */ = {isa = PBXBuildFile; fileRef = D17E998E1F72DFC20034AAE7 /* hook_objc_msgSend.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D17E99F01F72DFC20034AAE7 /* arm.h in Headers */ = {isa = PBXBuildFile; fileRef = D17E99951F72DFC20034AAE7 /* arm.h */; };
@@ -365,6 +365,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D17E99EB1F72DFC20034AAE7 /* appletrace.h in Headers */,
 				D17E9A1E1F72DFC20034AAE7 /* stack.h in Headers */,
 				D17E9A271F72DFC20034AAE7 /* debugbreak.h in Headers */,
 				D17E99F31F72DFC20034AAE7 /* mips.h in Headers */,
@@ -394,7 +395,6 @@
 				D17E9A251F72DFC20034AAE7 /* zzdefs.h in Headers */,
 				D17E9A311F72DFC20034AAE7 /* memory-utils-posix.h in Headers */,
 				D17E9A211F72DFC20034AAE7 /* thunker.h in Headers */,
-				D17E99EB1F72DFC20034AAE7 /* appletrace.h in Headers */,
 				D17E9A331F72DFC20034AAE7 /* thread-utils-posix.h in Headers */,
 				D17E99F51F72DFC20034AAE7 /* ppc.h in Headers */,
 				D17E9A201F72DFC20034AAE7 /* thread.h in Headers */,

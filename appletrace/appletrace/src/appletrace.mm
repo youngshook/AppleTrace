@@ -1,6 +1,6 @@
 //
-//  ostrace.m
-//  ostracelib
+//  appletrace.m
+//  appletrace
 //
 //  Created by everettjf on 2017/9/12.
 //  Copyright © 2017年 everettjf. All rights reserved.
@@ -19,7 +19,7 @@
 #include <unistd.h>
 #include <sys/mman.h>
 
-namespace ost {
+namespace appletrace {
     class Logger{
     private:
 //        int block_size = 64 * 1024 * 1024;  // 64MB
@@ -196,34 +196,10 @@ namespace ost {
 }
 
 
-void OSTBeginSection(const char* name){
-    ost::TraceManager::Instance().BeginSection(name);
+void APTBeginSection(const char* name){
+    appletrace::TraceManager::Instance().BeginSection(name);
 }
 
-void OSTEndSection(const char* name){
-    ost::TraceManager::Instance().EndSection(name);
+void APTEndSection(const char* name){
+    appletrace::TraceManager::Instance().EndSection(name);
 }
-
-void OSTTest(){
-//    ost::LoggerManager log;
-//    if(!log.Open()){
-//        NSLog(@"open failed");
-//        return;
-//    }
-//    for(int i=0;i< 1000;i++){
-//        log.AddLine("hello");
-//    }
-    
-    
-    static ost::Trace t;
-    if(!t.Open()){
-        NSLog(@"open failed");
-        return;
-    }
-    
-    for(int i = 0; i < 100; i++){
-        t.WriteSection("method_name", "B");
-        t.WriteSection("method_name", "E");
-    }
-}
-

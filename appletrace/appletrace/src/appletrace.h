@@ -7,14 +7,12 @@
 //
 
 
-
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT void OSTBeginSection(const char* name);
-FOUNDATION_EXPORT void OSTEndSection(const char* name);
-FOUNDATION_EXPORT void OSTTest();
+FOUNDATION_EXPORT void APTBeginSection(const char* name);
+FOUNDATION_EXPORT void APTEndSection(const char* name);
 
 
 // Objective C class method
-#define OSTBegin OSTBeginSection([NSString stringWithFormat:@"[%@]%@",self,NSStringFromSelector(_cmd)].UTF8String)
-#define OSTEnd OSTEndSection([NSString stringWithFormat:@"[%@]%@",self,NSStringFromSelector(_cmd)].UTF8String)
+#define APTBegin APTBeginSection([NSString stringWithFormat:@"[%@]%@",self,NSStringFromSelector(_cmd)].UTF8String)
+#define APTEnd APTEndSection([NSString stringWithFormat:@"[%@]%@",self,NSStringFromSelector(_cmd)].UTF8String)
