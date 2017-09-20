@@ -21,6 +21,8 @@
     // Override point for customization after application launch.
     OSTBegin;
     
+    [self myTest];
+    
     usleep(200);
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -34,6 +36,9 @@
     
     OSTEnd;
     return YES;
+}
+- (void)myTest{
+    NSLog(@"my test");
 }
 
 - (void)levelOne{
