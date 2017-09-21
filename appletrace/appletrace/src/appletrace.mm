@@ -107,9 +107,9 @@ namespace appletrace {
             
             NSString * log_name;
             if(file_counter == 0){
-                log_name = @"trace.ostrace";
+                log_name = @"trace.appletrace";
             }else{
-                log_name = [NSString stringWithFormat:@"trace_%@.ostrace",@(file_counter)];
+                log_name = [NSString stringWithFormat:@"trace_%@.appletrace",@(file_counter)];
             }
             NSString * log_path = [tmp_dir stringByAppendingPathComponent:log_name];
             NSLog(@"log path = %@",log_path);

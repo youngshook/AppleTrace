@@ -43,9 +43,9 @@ class Merger:
         i = 0
         while True:
             if i == 0:
-                file_path = os.path.join(self.dir,"trace.ostrace")
+                file_path = os.path.join(self.dir,"trace.appletrace")
             else:
-                file_path = os.path.join(self.dir,"trace_%d.ostrace" % (i))
+                file_path = os.path.join(self.dir,"trace_%d.appletrace" % (i))
 
             if not os.path.exists(file_path):
                 break
