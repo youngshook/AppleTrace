@@ -84,8 +84,8 @@ Open `sampledata/trace.html`.
 
 ## Dependencies
 
-1. catapult
-2. HookZz
+1. [catapult](https://github.com/catapult-project/catapult)
+2. [HookZz](https://github.com/jmpews/HookZz)
 
 
 
