@@ -3,7 +3,7 @@ Trace tool for iOS/macOS
 
 `AppleTrace` is developed for analyzing app's performance on `iOS/macOS`.
 
-![sample](sample.png)
+![sample](image/sample.png)
 
 ## Feature
 
@@ -53,6 +53,9 @@ Until now , there are 2 ways for generating trace data.
 ### 2. Copy
 
 Using any kinds of method, copy `<app's sandbox>/tmp/appletracedata` out of Simulator/RealDevice.
+
+![appletracedata](image/appletracedata.png)
+
 
 ### 3. Merge
 

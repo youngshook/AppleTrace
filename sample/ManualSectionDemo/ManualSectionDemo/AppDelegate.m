@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <appletrace/appletrace.h>
+#import "appletrace.h"
 #import "ThreadTest.h"
 
 @interface AppDelegate ()

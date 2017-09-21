@@ -102,6 +102,9 @@ namespace appletrace {
     public:
         std::string GetFilePath(){
             NSString * tmp_dir = NSTemporaryDirectory();
+            tmp_dir = [tmp_dir stringByAppendingPathComponent:@"appletracedata"];
+            [[NSFileManager defaultManager]createDirectoryAtPath:tmp_dir withIntermediateDirectories:YES attributes:nil error:nil];
+            
             NSString * log_name;
             if(file_counter == 0){
                 log_name = @"trace.ostrace";

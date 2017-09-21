@@ -7,7 +7,7 @@
 //
 
 #import "ThreadTest.h"
-#import <appletrace/appletrace.h>
+#import "appletrace.h"
 
 @implementation ThreadTest
 
