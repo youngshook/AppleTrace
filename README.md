@@ -5,9 +5,6 @@ Trace tool for iOS/macOS
 
 ![sample](image/sample.png)
 
-## Wechat Group 
-
-![wechatgroup](image/wechatgroup.jpg)
 
 ## Feature
 
@@ -96,3 +93,8 @@ Open `sampledata/trace.html`.
 ## Develop Plan
 
 1. dtrace as data source.
+
+
+## Wechat Group 
+
+![wechatgroup](image/wechatgroup.jpg
