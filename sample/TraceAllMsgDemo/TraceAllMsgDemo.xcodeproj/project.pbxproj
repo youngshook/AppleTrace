@@ -13,8 +13,9 @@
 		D17E9A841F72E5950034AAE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17E9A821F72E5950034AAE7 /* Main.storyboard */; };
 		D17E9A861F72E5950034AAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17E9A851F72E5950034AAE7 /* Assets.xcassets */; };
 		D17E9A891F72E5950034AAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17E9A871F72E5950034AAE7 /* LaunchScreen.storyboard */; };
-		D1C3036B1F72E5BE00D5A48D /* appletrace.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D17E9A951F72E59F0034AAE7 /* appletrace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D1C3036B1F72E5BE00D5A48D /* appletrace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17E9A951F72E59F0034AAE7 /* appletrace.framework */; };
 		D1C3036E1F72E5F100D5A48D /* ThreadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C3036D1F72E5F100D5A48D /* ThreadTest.m */; };
+		D1F490C21F7A9A460075EC47 /* appletrace.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D17E9A951F72E59F0034AAE7 /* appletrace.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D1C3036B1F72E5BE00D5A48D /* appletrace.framework in CopyFiles */,
+				D1F490C21F7A9A460075EC47 /* appletrace.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C3036B1F72E5BE00D5A48D /* appletrace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
