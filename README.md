@@ -97,4 +97,4 @@ Open `sampledata/trace.html`.
 
 ## Wechat Group 
 
-![wechatgroup](image/wechatgroup.jpg
+![wechatgroup](image/wechatgroup.jpg)
