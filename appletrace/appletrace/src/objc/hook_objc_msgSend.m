@@ -84,8 +84,8 @@ void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *ca
                 return;
             decollators[threadstack->size * 3] = '\0';
 //            char *class_name = class_getName(object_addr);
-            char *class_name = object_getClassName(object_addr);
-            int repl_len = strlen(class_name) + strlen(sel_name) + 10;
+            const char *class_name = object_getClassName(object_addr);
+            unsigned long repl_len = strlen(class_name) + strlen(sel_name) + 10;
             char *repl_name = malloc(repl_len);
             snprintf(repl_name, repl_len, "[%s]%s",class_name,sel_name);
             STACK_SET(callstack, "repl_name", repl_name, char*);
