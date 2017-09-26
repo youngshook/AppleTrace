@@ -5,6 +5,10 @@ Trace tool for iOS/macOS
 
 ![sample](image/sample.png)
 
+## Wechat Group 
+
+![wechatgroup](image/wechatgroup.jpg)
+
 ## Feature
 
 1. User-defined trace section.
