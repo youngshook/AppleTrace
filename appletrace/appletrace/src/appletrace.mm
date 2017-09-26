@@ -162,7 +162,7 @@ namespace appletrace {
             pthread_threadid_np(thread,&thread_id);
             uint64_t time = mach_absolute_time();
             
-            char sz[256] = {0};
+            char sz[1024] = {0};
             sprintf(sz, "{\"name\":\"%s\",\"cat\":\"catname\",\"ph\":\"%s\",\"pid\":666,\"tid\":%llu,\"ts\":%llu}",
                     name,ph,thread_id,time-begin_
                     );
