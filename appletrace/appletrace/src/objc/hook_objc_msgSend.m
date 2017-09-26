@@ -87,8 +87,9 @@ void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *ca
             char *class_name = object_getClassName(object_addr);
             unsigned int class_name_length = strlen(class_name);
             
-            char *repl_name = malloc(256);
-            snprintf(repl_name, 256, "[%s]%s",class_name,sel_name);
+            int repl_len = strlen(class_name) + strlen(sel_name) + 10;
+            char *repl_name = malloc(repl_len);
+            snprintf(repl_name, repl_len, "[%s]%s",class_name,sel_name);
             STACK_SET(callstack, "repl_name", repl_name, char*);
             
             NSLog(@"pre %s",repl_name);
