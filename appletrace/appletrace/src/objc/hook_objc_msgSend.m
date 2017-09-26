@@ -85,14 +85,12 @@ void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *ca
             decollators[threadstack->size * 3] = '\0';
 //            char *class_name = class_getName(object_addr);
             char *class_name = object_getClassName(object_addr);
-            unsigned int class_name_length = strlen(class_name);
-            
             int repl_len = strlen(class_name) + strlen(sel_name) + 10;
             char *repl_name = malloc(repl_len);
             snprintf(repl_name, repl_len, "[%s]%s",class_name,sel_name);
             STACK_SET(callstack, "repl_name", repl_name, char*);
             
-            NSLog(@"pre %s",repl_name);
+//            NSLog(@"pre %s",repl_name);
             APTBeginSection(repl_name);
         }
     }
@@ -101,7 +99,7 @@ void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *ca
 void objc_msgSend_post_call(RegState *rs, ThreadStack *threadstack, CallStack *callstack) {
     if(STACK_CHECK_KEY(callstack, "repl_name")){
         char *repl_name = STACK_GET(callstack, "repl_name", char*);
-        NSLog(@"post %s",repl_name);
+//        NSLog(@"post %s",repl_name);
         APTEndSection(repl_name);
         
         free(repl_name);
