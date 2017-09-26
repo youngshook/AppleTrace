@@ -162,11 +162,9 @@ namespace appletrace {
             pthread_threadid_np(thread,&thread_id);
             uint64_t time = mach_absolute_time();
             
-            char sz[1024] = {0};
-            sprintf(sz, "{\"name\":\"%s\",\"cat\":\"catname\",\"ph\":\"%s\",\"pid\":666,\"tid\":%llu,\"ts\":%llu}",
-                    name,ph,thread_id,time-begin_
-                    );
-            NSString *str = [[NSString alloc]initWithCString:sz encoding:NSUTF8StringEncoding];
+            NSString *str = [NSString stringWithFormat:@"{\"name\":\"%s\",\"cat\":\"catname\",\"ph\":\"%s\",\"pid\":666,\"tid\":%llu,\"ts\":%llu}",
+                              name,ph,thread_id,time-begin_
+                              ];
             dispatch_async(queue_, ^{
                 log_.AddLine(str.UTF8String);
             });
