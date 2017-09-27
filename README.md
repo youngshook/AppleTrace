@@ -3,6 +3,8 @@ Trace tool for iOS/macOS
 
 `AppleTrace` is developed for analyzing app's performance on `iOS/macOS`.
 
+[中文说明，开发思路及方法](http://everettjf.com/2017/09/21/appletrace/)
+
 ![sample](image/sample.png)
 
 
