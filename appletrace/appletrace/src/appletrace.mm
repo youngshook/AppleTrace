@@ -103,6 +103,7 @@ namespace appletrace {
         std::string GetFilePath(){
             NSString * tmp_dir = NSTemporaryDirectory();
             tmp_dir = [tmp_dir stringByAppendingPathComponent:@"appletracedata"];
+            [[NSFileManager defaultManager] removeItemAtPath:tmp_dir error:nil];
             [[NSFileManager defaultManager]createDirectoryAtPath:tmp_dir withIntermediateDirectories:YES attributes:nil error:nil];
             
             NSString * log_name;
@@ -163,7 +164,7 @@ namespace appletrace {
             uint64_t time = mach_absolute_time();
             
             NSString *str = [NSString stringWithFormat:@"{\"name\":\"%s\",\"cat\":\"catname\",\"ph\":\"%s\",\"pid\":666,\"tid\":%llu,\"ts\":%llu}",
-                              name,ph,thread_id,time-begin_
+                              name,ph,thread_id,(time-begin_)*1000
                               ];
             dispatch_async(queue_, ^{
                 log_.AddLine(str.UTF8String);
