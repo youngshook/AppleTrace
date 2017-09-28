@@ -96,4 +96,7 @@ Open `sampledata/trace.html`.
 
 1. dtrace as data source.
 
+## Wechat Group 
+
+![wechatgroup](image/wechatgroup.jpg)
 

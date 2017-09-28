@@ -148,13 +148,11 @@ namespace appletrace {
         uint64_t begin_;
     public:
         bool Open(){
-            if(!log_.Open()){
-                return false;
-            }
-            
             static dispatch_once_t onceToken;
             dispatch_once(&onceToken, ^{
-                queue_ = dispatch_queue_create("ostrace.queue", DISPATCH_QUEUE_SERIAL);
+                log_.Open();
+                
+                queue_ = dispatch_queue_create("appletrace.queue", DISPATCH_QUEUE_SERIAL);
                 begin_ = mach_absolute_time();
             });
             return true;
