@@ -55,7 +55,7 @@ Until now , there are 2 ways for generating trace data.
 
 ### 2. Copy
 
-Using any kinds of method, copy `<app's sandbox>/tmp/appletracedata` out of Simulator/RealDevice.
+Using any kinds of method, copy `<app's sandbox>/Library/appletracedata` out of Simulator/RealDevice.
 
 ![appletracedata](image/appletracedata.png)
 
