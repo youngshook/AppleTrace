@@ -152,8 +152,11 @@ namespace appletrace {
                 return false;
             }
             
-            queue_ = dispatch_queue_create("ostrace.queue", DISPATCH_QUEUE_SERIAL);
-            begin_ = mach_absolute_time();
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                queue_ = dispatch_queue_create("ostrace.queue", DISPATCH_QUEUE_SERIAL);
+                begin_ = mach_absolute_time();
+            });
             return true;
         }
         
