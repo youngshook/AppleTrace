@@ -107,7 +107,7 @@ namespace appletrace {
             NSString * log_name;
             if(file_counter == 0){
                 [[NSFileManager defaultManager] removeItemAtPath:tmp_dir error:nil];
-                [[NSFileManager defaultManager]createDirectoryAtPath:tmp_dir withIntermediateDirectories:YES attributes:nil error:nil];
+                [[NSFileManager defaultManager] createDirectoryAtPath:tmp_dir withIntermediateDirectories:YES attributes:nil error:nil];
                 
                 log_name = @"trace.appletrace";
             }else{
