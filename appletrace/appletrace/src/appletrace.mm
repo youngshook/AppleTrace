@@ -103,11 +103,12 @@ namespace appletrace {
         std::string GetFilePath(){
             NSString * tmp_dir = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
             tmp_dir = [tmp_dir stringByAppendingPathComponent:@"appletracedata"];
-            [[NSFileManager defaultManager] removeItemAtPath:tmp_dir error:nil];
-            [[NSFileManager defaultManager]createDirectoryAtPath:tmp_dir withIntermediateDirectories:YES attributes:nil error:nil];
             
             NSString * log_name;
             if(file_counter == 0){
+                [[NSFileManager defaultManager] removeItemAtPath:tmp_dir error:nil];
+                [[NSFileManager defaultManager]createDirectoryAtPath:tmp_dir withIntermediateDirectories:YES attributes:nil error:nil];
+                
                 log_name = @"trace.appletrace";
             }else{
                 log_name = [NSString stringWithFormat:@"trace_%@.appletrace",@(file_counter)];
