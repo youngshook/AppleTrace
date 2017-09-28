@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBAD2D031F7CF46200A527E5 /* appletrace_msgsend.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAD2D011F7CF46200A527E5 /* appletrace_msgsend.m */; };
+		CBAD2D041F7CF46200A527E5 /* appletrace_msgsend.h in Headers */ = {isa = PBXBuildFile; fileRef = CBAD2D021F7CF46200A527E5 /* appletrace_msgsend.h */; };
 		D17E99EB1F72DFC20034AAE7 /* appletrace.h in Headers */ = {isa = PBXBuildFile; fileRef = D17E998B1F72DFC20034AAE7 /* appletrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D17E99EC1F72DFC20034AAE7 /* appletrace.mm in Sources */ = {isa = PBXBuildFile; fileRef = D17E998C1F72DFC20034AAE7 /* appletrace.mm */; };
 		D17E99ED1F72DFC20034AAE7 /* hook_objc_msgSend.m in Sources */ = {isa = PBXBuildFile; fileRef = D17E998E1F72DFC20034AAE7 /* hook_objc_msgSend.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -70,6 +72,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CBAD2D011F7CF46200A527E5 /* appletrace_msgsend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = appletrace_msgsend.m; sourceTree = "<group>"; };
+		CBAD2D021F7CF46200A527E5 /* appletrace_msgsend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appletrace_msgsend.h; sourceTree = "<group>"; };
 		D17E997F1F72DF300034AAE7 /* appletrace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = appletrace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17E99831F72DF300034AAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D17E998B1F72DFC20034AAE7 /* appletrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appletrace.h; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		D17E998D1F72DFC20034AAE7 /* objc */ = {
 			isa = PBXGroup;
 			children = (
+				CBAD2D021F7CF46200A527E5 /* appletrace_msgsend.h */,
+				CBAD2D011F7CF46200A527E5 /* appletrace_msgsend.m */,
 				D17E998E1F72DFC20034AAE7 /* hook_objc_msgSend.m */,
 				D17E998F1F72DFC20034AAE7 /* HookZz */,
 			);
@@ -387,6 +393,7 @@
 				D17E99F91F72DFC20034AAE7 /* xcore.h in Headers */,
 				D17E99F41F72DFC20034AAE7 /* platform.h in Headers */,
 				D17E9A2B1F72DFC20034AAE7 /* mach_vm.h in Headers */,
+				CBAD2D041F7CF46200A527E5 /* appletrace_msgsend.h in Headers */,
 				D17E9A0A1F72DFC20034AAE7 /* instructions.h in Headers */,
 				D17E9A0C1F72DFC20034AAE7 /* reader.h in Headers */,
 				D17E9A121F72DFC20034AAE7 /* writer-arm64.h in Headers */,
@@ -481,6 +488,7 @@
 				D17E9A321F72DFC20034AAE7 /* thread-utils-posix.c in Sources */,
 				D17E9A2C1F72DFC20034AAE7 /* macho-utils-darwin.c in Sources */,
 				D17E9A2E1F72DFC20034AAE7 /* memory-utils-darwin.c in Sources */,
+				CBAD2D031F7CF46200A527E5 /* appletrace_msgsend.m in Sources */,
 				D17E9A061F72DFC20034AAE7 /* interceptor.c in Sources */,
 				D17E9A0B1F72DFC20034AAE7 /* reader.c in Sources */,
 				D17E9A1D1F72DFC20034AAE7 /* stack.c in Sources */,
@@ -612,6 +620,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = appletrace/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -635,6 +644,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = appletrace/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

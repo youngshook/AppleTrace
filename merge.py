@@ -23,7 +23,7 @@ class Merger:
 
     def append(self,line):
         line = line.strip('\n')
-        print len(line),' : ', line
+        #print len(line),' : ', line
         self.output.write(line)
         self.output.write(',\n')
 

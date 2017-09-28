@@ -22,6 +22,7 @@
 #import <mach-o/dyld.h>
 #import <dlfcn.h>
 #import "appletrace.h"
+#import "appletrace_msgsend.h"
 
 #define KENABLE 1
 
@@ -67,6 +68,8 @@ int LOG_ALL_CLASS = 0;
 }
 
 void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *callstack) {
+    if(!APTIsEnable())
+        return;
     char *sel_name = (char *)rs->general.regs.x1;
     // No More Work Here!!! it will be slow.
     if(LOG_ALL_SEL || (sel_name > log_sel_start_addr && sel_name < log_sel_end_addr)) {
@@ -85,6 +88,12 @@ void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *ca
             decollators[threadstack->size * 3] = '\0';
 //            char *class_name = class_getName(object_addr);
             const char *class_name = object_getClassName(object_addr);
+            
+            if(APTIsIgnoredClass(class_name)){
+                STACK_SET(callstack, "is_ignored", class_name, char*);
+                return;
+            }
+            
             unsigned long repl_len = strlen(class_name) + strlen(sel_name) + 10;
             char *repl_name = malloc(repl_len);
             snprintf(repl_name, repl_len, "[%s]%s",class_name,sel_name);
@@ -97,6 +106,12 @@ void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *ca
 }
 
 void objc_msgSend_post_call(RegState *rs, ThreadStack *threadstack, CallStack *callstack) {
+    if(!APTIsEnable())
+        return;
+    
+    if(STACK_CHECK_KEY(callstack, "is_ignored"))
+        return;
+
     if(STACK_CHECK_KEY(callstack, "repl_name")){
         char *repl_name = STACK_GET(callstack, "repl_name", char*);
 //        NSLog(@"post %s",repl_name);

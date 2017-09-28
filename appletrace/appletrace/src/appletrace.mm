@@ -196,7 +196,6 @@ namespace appletrace {
     };
 }
 
-
 void APTBeginSection(const char* name){
     appletrace::TraceManager::Instance().BeginSection(name);
 }
@@ -204,3 +203,4 @@ void APTBeginSection(const char* name){
 void APTEndSection(const char* name){
     appletrace::TraceManager::Instance().EndSection(name);
 }
+
