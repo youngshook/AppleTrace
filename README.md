@@ -3,7 +3,7 @@ Trace tool for iOS/macOS
 
 `AppleTrace` is developed for analyzing app's performance on `iOS/macOS`.
 
-Join us in [Gitter](https://gitter.im/appletrace/AppleTrace)
+Let's talk in [Gitter](https://gitter.im/appletrace/AppleTrace)
 
 [中文说明，开发思路及方法](http://everettjf.com/2017/09/21/appletrace/)
 
