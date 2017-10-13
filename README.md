@@ -5,6 +5,7 @@ Trace tool for iOS/macOS
 
 Let's talk in [Gitter](https://gitter.im/appletrace/AppleTrace) or 加入微信群:
 ![wechatgroup](image/wechatgroup.png) 
+
 (若群满加微信 everettjf )
 
 
