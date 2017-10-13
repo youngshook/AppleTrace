@@ -4,7 +4,8 @@ Trace tool for iOS/macOS
 `AppleTrace` is developed for analyzing app's performance on `iOS/macOS`.
 
 Let's talk in [Gitter](https://gitter.im/appletrace/AppleTrace) or 加入微信群:
-![wechatgroup](image/wechatgroup.png) (群若满请加微信 everettjf )
+![wechatgroup](image/wechatgroup.png) 
+(若群满加微信 everettjf )
 
 
 - [中文说明，开发思路及方法](http://everettjf.com/2017/09/21/appletrace/)
