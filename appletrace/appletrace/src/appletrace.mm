@@ -147,6 +147,7 @@ namespace appletrace {
         LoggerManager log_;
         dispatch_queue_t queue_;
         uint64_t begin_;
+        mach_timebase_info_data_t timeinfo_;
     public:
         bool Open(){
             static dispatch_once_t onceToken;
@@ -154,7 +155,9 @@ namespace appletrace {
                 log_.Open();
                 
                 queue_ = dispatch_queue_create("appletrace.queue", DISPATCH_QUEUE_SERIAL);
-                begin_ = mach_absolute_time();
+                mach_timebase_info(&timeinfo_);
+                begin_ = mach_absolute_time() * timeinfo_.numer / timeinfo_.denom;
+                
             });
             return true;
         }
@@ -163,10 +166,11 @@ namespace appletrace {
             pthread_t thread = pthread_self();
             __uint64_t thread_id=0;
             pthread_threadid_np(thread,&thread_id);
-            uint64_t time = mach_absolute_time();
+            uint64_t time = mach_absolute_time() * timeinfo_.numer / timeinfo_.denom;
+            uint64_t elapsed = time - begin_;
             
             NSString *str = [NSString stringWithFormat:@"{\"name\":\"%s\",\"cat\":\"catname\",\"ph\":\"%s\",\"pid\":666,\"tid\":%llu,\"ts\":%llu}",
-                              name,ph,thread_id,(time-begin_)*1000
+                              name,ph,thread_id,elapsed
                               ];
             dispatch_async(queue_, ^{
                 log_.AddLine(str.UTF8String);

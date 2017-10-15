@@ -21,6 +21,8 @@
     // Override point for customization after application launch.
     APTBegin;
     
+    usleep(300);
+    
     [self myTest];
     
     usleep(200);
@@ -31,7 +33,7 @@
         [t go];
         APTEndSection("dispatch_global");
     });
-    
+
     [self levelOne];
     
     APTEnd;
@@ -40,6 +42,7 @@
 - (void)myTest{
     APTBegin;
     NSLog(@"my test");
+    usleep(400);
     APTEnd;
 }
 

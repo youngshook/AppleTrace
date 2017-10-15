@@ -107,5 +107,6 @@ Open `sampledata/trace.html`.
 or 微信群
 
 ![wechatgroup](image/wechatgroup.png) 
-(若群满加微信 everettjf )
+
+(若二维码过期请先加微信 everettjf )
 
