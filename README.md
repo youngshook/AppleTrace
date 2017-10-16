@@ -16,6 +16,10 @@ Let's talk in [Gitter](https://gitter.im/appletrace/AppleTrace) or 加入微信�
 1. User-defined trace section.
 2. **[arm64 only]** Trace all Objective C methods.
 
+## FAQ
+
+[Go to Wiki](https://github.com/everettjf/AppleTrace/wiki)
+
 ## Usage
 
 1. Produce trace data.
