@@ -18,7 +18,7 @@ Let's talk in [Gitter](https://gitter.im/appletrace/AppleTrace) or 加入微信�
 
 ## FAQ
 
-[Go to Wiki](https://github.com/everettjf/AppleTrace/wiki)
+[Go to Wiki FAQ](https://github.com/everettjf/AppleTrace/wiki/FAQ)
 
 ## Usage
 
