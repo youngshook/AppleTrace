@@ -8,15 +8,31 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self hello];
+    
+}
+
+- (void)hello{
+    
+    sleep(200);
+    [self world];
+}
+
+- (void)world{
+    
+    sleep(100);
 }
 
 

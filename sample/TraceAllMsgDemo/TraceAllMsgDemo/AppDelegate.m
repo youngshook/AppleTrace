@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <appletrace/appletrace.h>
+#import "ViewController.h"
 #import "ThreadTest.h"
 
 @interface AppDelegate ()
@@ -20,16 +21,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self myTest];
-    
+
     usleep(200);
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         ThreadTest *t = [[ThreadTest alloc]init];
         [t go];
     });
-    
+
     [self levelOne];
     
+
+
     return YES;
 }
 - (void)myTest{

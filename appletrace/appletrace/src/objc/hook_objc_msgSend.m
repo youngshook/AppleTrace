@@ -81,7 +81,14 @@ void objc_msgSend_pre_call(RegState *rs, ThreadStack *threadstack, CallStack *ca
         
         void *super_class_addr = class_getSuperclass(class_addr);
         // KVO 2333
-        if(LOG_ALL_CLASS || ((object_addr > log_class_start_addr && object_addr < log_class_end_addr) || (class_addr > log_class_start_addr && class_addr < log_class_end_addr) || (super_class_addr > log_class_start_addr && super_class_addr < log_class_end_addr))) {
+        if(LOG_ALL_CLASS
+           || (
+               0
+              || (object_addr > log_class_start_addr && object_addr < log_class_end_addr)
+              || (class_addr >= log_class_start_addr && class_addr <= log_class_end_addr)
+              || (super_class_addr > log_class_start_addr && super_class_addr < log_class_end_addr)
+              )
+           ) {
             memset(decollators, 45, 128);
             if(threadstack->size * 3 >= 128)
                 return;
