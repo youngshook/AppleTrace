@@ -26,7 +26,7 @@ namespace appletrace {
         int block_size = 16 * 1024 * 1024;  // 16MB
 //        int block_size = 1 * 1024 * 1024;  // 1MB
 //        int block_size = 1 * 1024;  // 1KB
-        
+
         int fd_ = 0;
         char * file_start_ = NULL;
         char * file_cur_ = NULL;
@@ -34,10 +34,10 @@ namespace appletrace {
     public:
         Logger(){}
         ~Logger(){}
-        
+
         bool Open(const char * log_path){
             Close();
-            
+
             remove(log_path);
             fd_ = ::open(log_path, O_CREAT|O_RDWR,(mode_t)0600);
             if(fd_ == -1){
@@ -52,7 +52,7 @@ namespace appletrace {
                 return false;
             }
             ::lseek(fd_, 0, SEEK_SET);
-            
+
             file_start_ = (char*)::mmap(NULL,block_size,PROT_READ|PROT_WRITE,MAP_SHARED,fd_,0);
             if(file_start_ == MAP_FAILED){
                 NSLog(@"map failed");
@@ -77,38 +77,38 @@ namespace appletrace {
         bool AddLine(const char * line){
             if(!file_cur_)
                 return false;
-            
+
             size_t len = strlen(line);
             if(cur_size_ + len + 1> block_size){
                 NSLog(@"file full");
                 return false;
             }
-            
+
             memcpy(file_cur_, line, len);
             file_cur_ += len;
             memcpy(file_cur_, (const char *)"\n",1);
             file_cur_ += 1;
-            
+
             cur_size_ += len + 1;
             return true;
         }
     };
-    
-    
+
+
     class LoggerManager{
     private:
         static int file_counter;
         Logger log_;
     public:
         std::string GetFilePath(){
-            NSString * tmp_dir = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
+            NSString * tmp_dir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
             tmp_dir = [tmp_dir stringByAppendingPathComponent:@"appletracedata"];
-            
+
             NSString * log_name;
             if(file_counter == 0){
                 [[NSFileManager defaultManager] removeItemAtPath:tmp_dir error:nil];
                 [[NSFileManager defaultManager] createDirectoryAtPath:tmp_dir withIntermediateDirectories:YES attributes:nil error:nil];
-                
+
                 log_name = @"trace.appletrace";
             }else{
                 log_name = [NSString stringWithFormat:@"trace_%@.appletrace",@(file_counter)];
@@ -128,12 +128,12 @@ namespace appletrace {
         void AddLine(const char *line){
             if(log_.AddLine(line))
                 return;
-            
+
             NSLog(@"will map a new file");
             // map a new file
             if(!Open())
                 return;
-            
+
             if(!log_.AddLine(line)){
                 // error
                 NSLog(@"still error add line");
@@ -141,7 +141,7 @@ namespace appletrace {
         }
     };
     int LoggerManager::file_counter = 0;
-    
+
     class Trace{
     private:
         LoggerManager log_;
@@ -153,22 +153,22 @@ namespace appletrace {
             static dispatch_once_t onceToken;
             dispatch_once(&onceToken, ^{
                 log_.Open();
-                
+
                 queue_ = dispatch_queue_create("appletrace.queue", DISPATCH_QUEUE_SERIAL);
                 mach_timebase_info(&timeinfo_);
                 begin_ = mach_absolute_time() * timeinfo_.numer / timeinfo_.denom;
-                
+
             });
             return true;
         }
-        
+
         void WriteSection(const char *name,const char *ph){
             pthread_t thread = pthread_self();
             __uint64_t thread_id=0;
             pthread_threadid_np(thread,&thread_id);
             uint64_t time = mach_absolute_time() * timeinfo_.numer / timeinfo_.denom;
             uint64_t elapsed = time - begin_;
-            
+
             NSString *str = [NSString stringWithFormat:@"{\"name\":\"%s\",\"cat\":\"catname\",\"ph\":\"%s\",\"pid\":666,\"tid\":%llu,\"ts\":%llu}",
                               name,ph,thread_id,elapsed
                               ];
@@ -177,7 +177,7 @@ namespace appletrace {
             });
         }
     };
-    
+
     class TraceManager{
     private:
         Trace t_;
@@ -186,13 +186,13 @@ namespace appletrace {
             static TraceManager o;
             return o;
         }
-        
+
         TraceManager(){
             if(!t_.Open()){
                 NSLog(@"error open trace file");
             }
         }
-        
+
         void BeginSection(const char* name){
             t_.WriteSection(name, "B");
         }
